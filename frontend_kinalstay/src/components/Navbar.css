@@ -1,0 +1,21 @@
+.navbar-background{
+    background-color: #DED5BC;
+}
+
+
+.nav-link {
+    display: flex !important; 
+    align-items: center !important;
+    justify-content: center !important; 
+    color: white !important; 
+    font-weight: bold !important;
+}
+.navbar-button{
+    border-radius: 20%;
+    font-family: Arial;
+    color: white;
+}
+
+.navbar-button:hover {
+    background-color: #B1AB94;
+}

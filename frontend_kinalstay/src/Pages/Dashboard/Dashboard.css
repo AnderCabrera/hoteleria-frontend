@@ -1,0 +1,59 @@
+.img-container {
+  position: relative; /* Cambiado a relative */
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.img-Fondo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el texto vertical y horizontalmente */
+  color: white;
+  text-align: center;
+}
+
+footer {
+  padding: 20px 0; /* Agregar relleno opcional al footer */
+}
+
+.container-letters {
+  text-align: center;
+  color: #B1AB94;
+  font-weight: bold;
+}
+
+
+.img-footer {
+  display: flex;
+  justify-content: center; /* Centrar las imágenes horizontalmente */
+}
+
+.img-footer-icon {
+  margin: 0 14px; /* Espacio entre las imágenes */
+  width: 40px; /* Tamaño de las imágenes */
+  height: 40px;
+}
+
+.container-information{
+  display: flex;
+  
+}
+ .container-information-left{
+  padding-left: 8%;
+  width: 50%; 
+}
+.container-information-rigth{
+  width: 50%;
+  color: #B1AB94;
+}
+.container-information-letter{
+  padding-left: 50px;
+}
