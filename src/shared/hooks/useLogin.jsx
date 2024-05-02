@@ -22,13 +22,14 @@ export const useLogin = () => {
                 'Error general al intentar logearse. Intenta de nuevo.'
             )
         } else if (response) {
+            console.log(response)
+            const { userDetails } = response.data
+            localStorage.setItem('token', response.data.token)
+            navigate('/registro')
             return toast.success(
                 'Te has logeado exitosamente'
             )
         }
-        const { userDetails } = response.data
-        localStorage.setItem('user', JSON.stringify(userDetails))
-        navigate('/registro')
     }
     return {
         login,
