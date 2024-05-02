@@ -19,11 +19,10 @@ const MyNavbar = () => {
             </Navbar.Collapse>
           </Col>
           <Col xs="auto" >
-         
-            <Nav.Link className='navbar-button' href="#"> Login</Nav.Link>
+            <Nav.Link className='navbar-button' href="/login" style={{marginTop: '55%'}}> Login</Nav.Link>
           </Col>
           <Col xs="auto">
-          <Nav.Link className='navbar-button' href="#">Registrar</Nav.Link>
+          <Nav.Link className='navbar-button' href="/registro" style={{marginTop: '35%'}}>Registrar</Nav.Link>
           </Col>
         </Row>
       </Container>

@@ -1,0 +1,79 @@
+.form-container{
+    width: 30%;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -2em;
+    margin-left: -5em;
+}
+
+.input-container{
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #D5D1C3; /* Fondo de los inputs */
+    color: black; /* Color de las letras */
+}
+
+.input-container input:focus {
+    outline: none;
+}
+
+.logo {
+    width: 30%;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    margin-top: -5em;
+    margin-bottom: 10px;
+    margin-right: 0px; 
+    margin-left: 20px;
+}
+
+.validation-message{
+    width: 10%;
+    color: red;
+}
+
+.registro{
+    background-color: #F2F0E6;
+}
+
+
+.button-container {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.button-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 20px; /* Bordes redondeados para el botón */
+    background-color: #D5D1C3; /* Color del botón */
+    color: black;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #B1AB94; /* Cambia el color del botón al pasar el ratón */
+}
+
+.title{
+    color: #B1AB94;
+    font-size: 2em;
+    flex-direction: column;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.subtitle{
+    color: #B1AB94;
+    font-size: 1em;
+    flex-direction: column;
+    font-style: italic;
+    font-weight: bold;
+}

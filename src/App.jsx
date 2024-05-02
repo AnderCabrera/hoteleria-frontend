@@ -1,16 +1,21 @@
-import { useState } from 'react'
 import  './Pages/Dashboard/Dashboard.css'
-import { Dashboard } from './Pages/Dashboard/Dashboard.jsx'
 import Instagram from '../src/assets/img/Instagram.png'
 import Facebook from '../src/assets/img/Facebook.png'
 import Telefono from '../src/assets/img/Telefono.png'
 import WhatsApp from '../src/assets/img/WhatsApp.png'
-
+import { Toaster } from "react-hot-toast"
+import { useRoutes } from "react-router-dom"
+import { routes } from "./routes.jsx"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
+
+  const element = useRoutes(routes)
+
   return (
     <>
-    <Dashboard/>
+    {element}
+    <Toaster position="bottom-rigth" reverseOrder={false}/>
     <footer>
       <div className='container-letters'>
         <br />
@@ -23,7 +28,7 @@ function App() {
             <img className='img-footer-icon' src={WhatsApp} alt="" />
         </div>
         <br />
-        <h4>©Copyright 2023 Kina Stay All Rights Reserved</h4>
+        <h4>©Copyright 2023 Kinal Stay All Rights Reserved</h4>
       </div>
     </footer>
     </>
