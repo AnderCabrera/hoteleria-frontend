@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import MyNavbar from './Navbar'
-import { jwtDecode } from 'jwt-decode';
 import { LogoSinLetras } from './logoSinLetras.jsx'
 import { Input } from './Input.jsx'
 import { deleteUser } from '../shared/hooks/deleteUser.jsx';
+
 export const SettingUser = () => {
         const {usedeleteUser} = deleteUser()
-
+        
+        const id = localStorage.getItem('_id')
+        
 return (
     <>
     <MyNavbar/>
@@ -66,7 +68,7 @@ return (
                 </div>
                 <div className='button-container d-flex justify-content-between '>
                     <button className='btn btn-primary'>Actualizar</button>
-                    <button onClick={usedeleteUser()} className='btn btn-primary'>Eliminar</button>
+                    <button onClick={() => usedeleteUser(id)} className='btn btn-primary'>Eliminar</button>
                 </div>
                 
             </form>

@@ -26,9 +26,9 @@ export const loginRequest = async (data) => {
         }
     }
 }
-export const deleteUserRequest = async()=>{
+export const deleteUserRequest = async(id)=>{
     try {
-        return await apiClient.get('/user/delete')
+        return await apiClient.get(`/user/delete/${id}`)
     } catch (err) {
         return {
             error: true,
@@ -62,4 +62,13 @@ export const getHotelRequest = async()=>{
 }
 
 
-
+export const getUserRequest = async(id)=>{
+    try {
+        return await apiClient.get(`/user/search/${id}`)
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}

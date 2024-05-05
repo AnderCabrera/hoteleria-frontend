@@ -2,6 +2,7 @@ import {useState} from 'react'
 import { loginRequest } from '../../services/api'
 import toast from 'react-hot-toast'
 import { useNavigate } from "react-router-dom"
+import { jwtDecode } from 'jwt-decode'
 
 export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -25,6 +26,10 @@ export const useLogin = () => {
             console.log(response)
             const { userDetails } = response.data
             localStorage.setItem('token', response.data.token)
+            const token = localStorage.getItem('token')
+            const decodeToken = jwtDecode(token)
+            const tokenId = decodeToken.uid
+            localStorage.setItem('_id', tokenId)
             
             navigate('/registro')
             return toast.success(

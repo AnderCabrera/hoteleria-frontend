@@ -2,12 +2,12 @@ import React from 'react'
 import { deleteUserRequest } from '../../services/api'
 
 export const deleteUser = () => {
-    const usedeleteUser = async () => {
-        const response = await deleteUserRequest()
+    const usedeleteUser = async (id) => {
+        const response = await deleteUserRequest(id)
         if (response.error) {
             alert('error al eliminar')
         }
-        alert('post eliminado')
+        alert('usuario eliminado')
     }
     return {
         usedeleteUser
