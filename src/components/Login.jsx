@@ -101,7 +101,7 @@ export const Login = () => {
             />
           </div>
           <div className='button-container'>
-            <button className='btn btn-primary'>Iniciar Sesión</button>
+            <button  href="/" className='btn btn-primary'>Iniciar Sesión</button>
           </div>
           <p className='mt-3'>
             ¿No tienes una cuenta?

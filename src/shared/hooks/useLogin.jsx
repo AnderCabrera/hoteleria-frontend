@@ -25,6 +25,7 @@ export const useLogin = () => {
             console.log(response)
             const { userDetails } = response.data
             localStorage.setItem('token', response.data.token)
+            
             navigate('/registro')
             return toast.success(
                 'Te has logeado exitosamente'

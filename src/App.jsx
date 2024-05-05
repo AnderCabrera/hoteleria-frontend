@@ -1,4 +1,4 @@
-import  './Pages/Dashboard/Dashboard.css'
+import  './Pages/HomePage/HomePage.css'
 import Instagram from '../src/assets/img/Instagram.png'
 import Facebook from '../src/assets/img/Facebook.png'
 import Telefono from '../src/assets/img/Telefono.png'
