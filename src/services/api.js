@@ -72,3 +72,14 @@ export const getUserRequest = async(id)=>{
         }
     }
 }
+
+export const addHotelRequest = async(data) =>{
+    try {
+        return await apiClient.get('/hotel/newHotel',data)
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}

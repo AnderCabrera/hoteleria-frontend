@@ -30,6 +30,8 @@ export const useLogin = () => {
             const decodeToken = jwtDecode(token)
             const tokenId = decodeToken.uid
             localStorage.setItem('_id', tokenId)
+            const role = decodeToken.role
+            localStorage.setItem('role', role)
             
             navigate('/registro')
             return toast.success(

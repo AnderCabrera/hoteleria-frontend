@@ -28,7 +28,7 @@ function App() {
             <img className='img-footer-icon' src={WhatsApp} alt="" />
         </div>
         <br />
-        <h4>©Copyright 2023 Kinal Stay All Rights Reserved</h4>
+        <h4>©Copyright 2024 Kinal Stay All Rights Reserved</h4>
       </div>
     </footer>
     </>

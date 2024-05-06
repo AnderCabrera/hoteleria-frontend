@@ -4,12 +4,15 @@ import {HotelContainer} from './components/HotelContainer.jsx'
 import { Dashboard } from './Pages/Dashboard/Dashboard.jsx'
 import HomePage from './Pages/HomePage/HomePage.jsx'
 import { SettingUser } from './components/SettingUser.jsx'
+import { AdminContainer } from './components/Admin/AdminContainer.jsx'
+
 
 export const routes = [
     {path: '/registro', element: <Registro/>},
     {path: '/login', element: <Login/>},
     {path:'/settingUser',element:<SettingUser/> },
     {path: '/Hotel/*', element:<HotelContainer/>},
+    {path: '/Admin/*', element:<AdminContainer/>},
     {path: '*', element: <HomePage/>}
 
 ]

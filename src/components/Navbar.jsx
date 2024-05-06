@@ -6,6 +6,8 @@ import logo from '../assets/img/LogoConNombre.png';
 const MyNavbar = () => {
   // Verifica si hay un token en el localStorage
   const isLoggedIn = localStorage.getItem('token') !== null;
+  // Supongamos que tienes una variable que almacena el rol del usuario
+  const userRole = localStorage.getItem('role');
 
   return (
     <Navbar className='navbar-background' expand="lg">
@@ -18,8 +20,13 @@ const MyNavbar = () => {
                 <Navbar.Brand ><img src={logo} alt="" width='90px'/></Navbar.Brand>
                 {isLoggedIn ? (
                   <>
-                  <Nav.Link  className='navbar-button' href="/">Inicio</Nav.Link>
-                    <Nav.Link  className='navbar-button' href="/Hotel/CardHotel">Hoteles</Nav.Link>
+                    <Nav.Link  className='navbar-button' href="/">Inicio</Nav.Link>
+                    {/* Verifica si el usuario es ADMIN_APP */}
+                    {userRole === 'ADMIN_APP' ? (
+                      <Nav.Link  className='navbar-button' href="/Admin/HotelAdmin">Hoteles</Nav.Link>
+                    ) : (
+                      <Nav.Link  className='navbar-button' href="/Hotel/CardHotel">Hoteles</Nav.Link>
+                    )}
                     <Nav.Link className='navbar-button' href="#">Servicios</Nav.Link>
                     <Nav.Link className='navbar-button' href="#">Reservaciones</Nav.Link>
                   </>
