@@ -5,6 +5,12 @@ import logoNombre from '../../assets/img/LogoConNombre.png'
 import './HomePage.css';
 import HotelesCard from '../../components/HotelesCard.jsx'
 import { hotelGet } from '../../shared/hooks/hotelGet.jsx';
+import Card from '../../components/HotelesCard.jsx';
+const cardProps = {
+  image: 'https://definicion.de/wp-content/uploads/2009/09/hotel.jpg',
+  name: 'Nombre del hotel',
+  info: 'Información adicional sobre el hotel'
+};
 
 
 const countries = ['Guatemala', 'Canadá', 'México', 'Estados Unidos', 'Argentina', 'Brasil', 'España', 'Francia', 'Italia', 'China'];
@@ -43,7 +49,15 @@ export const HomePage = () => {
         </div>
       </div>
       <div className='container-cards'>
-         <HotelesCard />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
+          <Card {...cardProps} />
       </div>
       <div className='container-letters'>
         <h1>CONOCE MÁS SOBRE NOSOTROS</h1>
