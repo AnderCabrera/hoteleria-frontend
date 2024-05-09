@@ -26,6 +26,17 @@ export const loginRequest = async (data) => {
         }
     }
 }
+export const getUserRequest = async(id)=>{
+    try {
+        return await apiClient.get(`/user/search/${id}`)
+    } catch (err) {
+       return {
+            error:true,
+            err
+       } 
+    }
+}
+
 export const deleteUserRequest = async(id)=>{
     try {
         return await apiClient.get(`/user/delete/${id}`)
@@ -62,16 +73,7 @@ export const getHotelRequest = async()=>{
 }
 
 
-export const getUserRequest = async(id)=>{
-    try {
-        return await apiClient.get(`/user/search/${id}`)
-    } catch (err) {
-        return {
-            error: true,
-            err
-        }
-    }
-}
+
 
 export const addHotelRequest = async(data) =>{
     try {

@@ -1,20 +1,54 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MyNavbar from './Navbar'
 import { LogoSinLetras } from './logoSinLetras.jsx'
 import { Input } from './Input.jsx'
 import { deleteUser } from '../shared/hooks/deleteUser.jsx';
+import { getUser } from '../shared/hooks/getUser.jsx';
 
 export const SettingUser = () => {
+    const {users,isFetching, getUsers} = getUser()
         const {usedeleteUser} = deleteUser()
-        
         const id = localStorage.getItem('_id')
+        console.log(id)
+
+        useEffect(()=>{
+            getUsers()
+            console.log(users)
+        },[])
+
+        const [user, setUser] =useState(
+            {
+                _id: '',
+                name: '',
+                username : '',
+                lastname: '',
+                email: '',
+
+            }
+        )
+
+        const handleChange= (e)=>{
+            setUser((prevData)=>(
+                {
+                    ...prevData,
+                    [e.target.name]: e.target.value
+                }
+            ))
+        }
+
+
         
 return (
     <>
     <MyNavbar/>
+
+   
     <div className='registro template d-flex justify-content-center align-items-center 110-w vh-110'>
-        <LogoSinLetras text={'Kinal Stay'}/>
-        <div className='form-container 50-w p-5 rounded '>
+    <LogoSinLetras text={'Kinal Stay'}/>
+    {
+       //no quiere pipipi
+        users.map((users)=> (
+            <div className='form-container 50-w p-5 rounded '>
             <form >
                 <div className='mb-2'>
                     <Input
@@ -73,6 +107,8 @@ return (
                 
             </form>
         </div>
+        ))
+    }
     </div>
     </>
 )
