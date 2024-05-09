@@ -1,10 +1,33 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './HotelCard.css';
 
-export const HotelesCard = ({hoteles =[]}) => {
-    return(
-      <div>hola</div>
-    )
+const Card = ({ image, name, info }) => {
+
+  const [selected, setSelected] = useState(false);
+ 
+  const handleHeartClick = () => {
+    setSelected(!selected);
+    console.log(selected)
+  };
+  return (
+    <div className="card">
+      <img src={image} alt={name} className="card-image" />
+      <div className="card-info">
+        <p className="card-name">{name}</p>
+        <p className="card-info-text">{info}</p>
+        <button className="card-button">Reserva ahora</button>
+        <div
+            className={`heart ${selected ? 'selected' : ''}`}
+            onClick={handleHeartClick}
+>
+            {/* No se necesita contenido */}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
 /* 
     const [hotel,setHoteles] = useState(
       {
@@ -50,6 +73,4 @@ export const HotelesCard = ({hoteles =[]}) => {
     
   );
    */
-};
 
-export default HotelesCard;
