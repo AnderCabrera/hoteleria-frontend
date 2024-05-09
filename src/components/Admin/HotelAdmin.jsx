@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { LogoSinLetras } from '../logoSinLetras.jsx'
 import { Input } from '../Input.jsx' 
 import { addHotel } from '../../shared/hooks/addHotel.jsx'
+import { TaskForm } from '../Admin/TaskForm.jsx';
 import MyNavbar from '../Navbar.jsx'
+
 export const HotelAdmin = () => {
         const {saveHotel} = addHotel()
 
@@ -57,7 +59,12 @@ export const HotelAdmin = () => {
         <>
             <MyNavbar></MyNavbar>
             <div className='registro template d-flex justify-content-center align-items-center 110-w vh-110'>
-            <LogoSinLetras text={'Kinal Stay'}/>
+            <div className="bg-[#111]">
+            <div className="task-form-container w-full flex flex-col items-center">
+            </div>
+            <div className="tasks-container w-full flex flex-col items-center">
+            </div>
+            </div>
             <div className='form-container 50-w p-5 rounded '>
                 <form onSubmit={handleAddHotel} > 
                     <div className='mb-2'>
