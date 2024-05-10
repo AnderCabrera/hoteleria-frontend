@@ -33,7 +33,7 @@ export const useLogin = () => {
             const role = decodeToken.role
             localStorage.setItem('role', role)
             
-            navigate('/registro')
+            navigate('/*')
             return toast.success(
                 'Te has logeado exitosamente'
             )
