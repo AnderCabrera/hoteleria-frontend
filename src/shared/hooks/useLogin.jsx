@@ -18,9 +18,11 @@ export const useLogin = () => {
         setIsLoading(false)
 
         if(response.error){
+            localStorage.clear();
             return toast.error(
                 response?.e?.response?.data ||
                 'Error general al intentar logearse. Intenta de nuevo.'
+                
             )
         } else if (response) {
             console.log(response)
@@ -36,6 +38,7 @@ export const useLogin = () => {
             navigate('/*')
             return toast.success(
                 'Te has logeado exitosamente'
+               
             )
         }
     }

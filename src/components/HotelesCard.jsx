@@ -1,76 +1,85 @@
-import { useState } from 'react';
-import './HotelCard.css';
+import { useEffect, useState } from 'react';
+import './HotelCard.css'; // Importar el CSS aquí
+import { getHotelRequest, getImgHotelRequest } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
-const Card = ({ image, name, info }) => {
+const Card = () => {
+  const [hotels, setHotels] = useState([]);
+  const [imgHotels, setImgHotels] = useState([]);
+  const navigate = useNavigate();
 
-  const [selected, setSelected] = useState(false);
- 
-  const handleHeartClick = () => {
-    setSelected(!selected);
-    console.log(selected)
+  useEffect(() => {
+    getHotelRequest()
+      .then((response) => {
+        setHotels(response.data.hotelsFound);
+      })
+      .catch((error) => {
+        console.error('Error fetching hotels:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const fetchImgHotels = async () => {
+      // Obtener las URLs de las imágenes de los hoteles
+      const imgPromises = hotels.map((hotel) => getImgHotelRequest(hotel._id));
+      const imgResults = await Promise.all(imgPromises);
+
+      // Mapear las URLs de las imágenes de todos los hoteles
+      const imgUrls = imgResults.map((imgResult) => {
+        // Si hay imágenes encontradas para el hotel
+        if (imgResult.data.foundedImages.length > 0) {
+          // Mapear las URLs de las imágenes
+          return imgResult.data.foundedImages.map(image => image.image_url);
+        } else {
+          // Si no hay imágenes encontradas, devolver un arreglo vacío
+          return [];
+        }
+      });
+
+      // Guardar las URLs de las imágenes en el estado
+      setImgHotels(imgUrls);
+    };
+
+    fetchImgHotels();
+  }, [hotels]);
+  console.log(imgHotels)
+
+  const getHotel = (hotel) => {
+    navigate('/HotelPage', { state: { hotel } });
   };
+
+  const handleHeartClick = (index) => {
+    setHotels((prevHotels) => {
+      const updatedHotels = [...prevHotels];
+      updatedHotels[index] = { ...updatedHotels[index], selected: !updatedHotels[index].selected };
+      return updatedHotels;
+    });
+  };
+
   return (
-    <div className="card">
-      <img src={image} alt={name} className="card-image" />
-      <div className="card-info">
-        <p className="card-name">{name}</p>
-        <p className="card-info-text">{info}</p>
-        <button className="card-button">Reserva ahora</button>
-        <div
-            className={`heart ${selected ? 'selected' : ''}`}
-            onClick={handleHeartClick}
->
-            {/* No se necesita contenido */}
-        </div>
+    <>
+      <div className='d-flex container-cards'> {/* Agregamos la clase container-cards */}
+        {
+          hotels.map((hotel, index) => (
+            <div key={index} className="card">
+              <div className="card-info">
+                <img src={imgHotels[index]} alt={`Imagen de ${hotel.name}`} className="card-image" />
+                <p className="card-name">{hotel.name}</p>
+                <p className="card-info-text">{hotel.description}</p>
+                <button onClick={() => getHotel(hotel)} className="card-button">Reserva ahora</button>
+                <div
+                  className={`heart ${hotel.selected ? 'selected' : ''}`}
+                  onClick={() => handleHeartClick(index)}
+                >
+                  {/* No se necesita contenido */}
+                </div>
+              </div>
+            </div>
+          ))
+        }
       </div>
-    </div>
+    </>
   );
 };
 
 export default Card;
-/* 
-    const [hotel,setHoteles] = useState(
-      {
-        _id: '',
-        name: '',
-        description: '',
-       
-      }
-    )
-   
-    const noData = (
-      <>
-        <div className="m-5 d-flex align-items-center justify-content-center">
-          No hay datos :(
-        </div>
-      
-      </>
-  )
-    const getHotel = (hotel)=>{
-      setHoteles(hotel)
-    } 
-
-  return (
-    <>
-    {
-     
-        hoteles.map((hotel)=>(
-          
-          <div  className="card">
-          <img   className="card-image" />
-          <div className="card-info">
-            <p className="card-name">{hotel.name}</p>
-            <p className="card-info-text">{hotel.description}</p>
-            <button className="card-button">Reserva ahora</button>
-          </div>
-        </div>
-        ))
-      
-    }
-    </>
-    
-   
-    
-  );
-   */
-

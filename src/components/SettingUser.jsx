@@ -22,10 +22,6 @@ export const SettingUser = () => {
                 setUser(user.foundedUser)
             })
     }, [])
-    const UserGet = (user) => {
-        setUser(user)
-    }
-
     const handleChange = (value, field) => {
         setUser((prevData) => (
             {
