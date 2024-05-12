@@ -8,6 +8,12 @@ const MyNavbar = () => {
   const isLoggedIn = localStorage.getItem('token') !== null;
   // Supongamos que tienes una variable que almacena el rol del usuario
   const userRole = localStorage.getItem('role');
+  const handleLogout = () => {
+   
+    localStorage.clear();
+   
+    window.location.reload();
+  };
 
   return (
     <Navbar className='navbar-background' expand="lg">
@@ -42,7 +48,9 @@ const MyNavbar = () => {
             )}
           </Col>
           <Col xs="auto">
-            {isLoggedIn ? null : (
+             {isLoggedIn ? (
+              <Nav.Link className='navbar-button' onClick={handleLogout} style={{marginTop: '35%'}}>Cerrar Sesión</Nav.Link>
+            ) : (
               <Nav.Link className='navbar-button' href="/registro" style={{marginTop: '35%'}}>Registrar</Nav.Link>
             )}
           </Col>
