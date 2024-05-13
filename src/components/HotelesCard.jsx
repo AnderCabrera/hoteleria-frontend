@@ -3,6 +3,7 @@ import './HotelCard.css'; // Importar el CSS aquí
 import { getHotelRequest, getImgHotelRequest } from '../services/api';
 import { useNavigate } from 'react-router-dom';
 
+
 const Card = () => {
   const [hotels, setHotels] = useState([]);
   const [imgHotels, setImgHotels] = useState([]);
@@ -66,7 +67,7 @@ const Card = () => {
                 <img src={imgHotels[index]} alt={`Imagen de ${hotel.name}`} className="card-image" />
                 <p className="card-name">{hotel.name}</p>
                 <p className="card-info-text">{hotel.description}</p>
-                <button onClick={() => getHotel(hotel)} className="card-button">Reserva ahora</button>
+                <button onClick={() => getHotel(hotel)} className="card-button">Información</button>
                 <div
                   className={`heart ${hotel.selected ? 'selected' : ''}`}
                   onClick={() => handleHeartClick(index)}

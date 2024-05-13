@@ -91,3 +91,14 @@ export const addHotelRequest = async(data) =>{
         }
     }
 }
+
+export const getTypeRoomRequest = async()=>{
+    try {
+        return await apiClient.get('/typeRoom/view')
+    } catch (err) {
+        return{
+            error:true,
+            err
+        }
+    }
+}
