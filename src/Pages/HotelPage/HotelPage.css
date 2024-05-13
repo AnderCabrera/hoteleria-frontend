@@ -58,3 +58,25 @@
     height: 77vh;
     overflow: hidden;
 }
+
+
+.reserve-button {
+    display: inline;
+    text-align: center;
+    margin: 3%;
+    border-radius: 90px;
+    background-color: #B1AB94;
+    color: black;
+    border: none;
+    padding: 5% 10%; /* Reducido el padding vertical */
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  
+
+  }
+  
+  .reserve-button:hover {
+    background-color: #DED5BC;
+  }
+  

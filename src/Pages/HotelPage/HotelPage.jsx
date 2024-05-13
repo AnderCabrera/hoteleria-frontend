@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom'; // Importar useLocation
+import { useLocation, useNavigate } from 'react-router-dom'; // Importar useLocation y useNavigate
 import MyNavbar from '../../components/Navbar';
 import './HotelPage.css'
 import { getImgHotelRequest } from '../../services/api';
@@ -11,7 +11,8 @@ const HotelPage = () => {
   const [imgHotel,setImgHotel] = useState([])
   const location = useLocation();
   const { hotel } = location.state;
-  
+  const navigate = useNavigate(); // Obtener la función navigate
+
   useEffect(() => {
     getImgHotelRequest(hotel._id)
       .then((response) => {
@@ -23,6 +24,10 @@ const HotelPage = () => {
   }, []);
   
   console.log(imgHotel);
+
+  const handleNavigate =()=>{
+      navigate('/InformationHotel'); // Redirigir al usuario a '/InformationHotel'
+  }
 
   return (
     <>
@@ -69,8 +74,14 @@ const HotelPage = () => {
               <p  className='text-info-description'>{hotel.description} </p>
             </div>
           </div>
+          <br /><br /><br />
+          
+          <div className='container-text'>
+            <button className='reserve-button' onClick={handleNavigate}> Reservar Habitación</button>
+          </div>
         </div>
       </div>
+      <br /><br /><br />
     </>
   );
 };

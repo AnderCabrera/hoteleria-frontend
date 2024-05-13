@@ -9,6 +9,7 @@
   }
   
   .card {
+   
     width: 30%; 
     margin-bottom: 5%; 
   }
@@ -22,8 +23,8 @@
   
   .card-info {
     padding: 10px;
+    margin-bottom: 100px; 
   }
-  
   .card-name {
     text-align: center;
     color: #B1AB94;
@@ -41,22 +42,24 @@
     margin-bottom: 10px;
   }
   
-  .card-button {
-    margin: 3%;
-    border-radius: 90px;
-    background-color: #B1AB94;
-    color: black;
-    border: none;
-    padding: 8% 20%;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    width: 90%;
-  }
-  
-  .card-button:hover {
-    background-color: #DED5BC;
-  }
+ .card-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 90px;
+  background-color: #B1AB94;
+  color: black;
+  border: none;
+  padding: 8% 20%;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 90%;
+}
+
+.card-button:hover {
+  background-color: #DED5BC;
+}
   
   .heart {
     position: absolute;

@@ -2,16 +2,15 @@ import React from 'react';
 import './Navbar.css'
 import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
 import logo from '../assets/img/LogoConNombre.png';
+import { useNavigate } from 'react-router-dom';
 
 const MyNavbar = () => {
-  // Verifica si hay un token en el localStorage
+  const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem('token') !== null;
-  // Supongamos que tienes una variable que almacena el rol del usuario
   const userRole = localStorage.getItem('role');
   const handleLogout = () => {
-   
+    navigate('/*')
     localStorage.clear();
-   
     window.location.reload();
   };
 
