@@ -41,7 +41,7 @@ const MyNavbar = () => {
           </Col>
           <Col xs="auto" >
             {isLoggedIn ? (
-              <Nav.Link className='navbar-button' href="/settingUser" style={{marginTop: '55%'}}>Mi Cuenta</Nav.Link>
+              <Nav.Link className='navbar-button' href="/settingUser" style={{marginTop: '48%'}}>Mi Cuenta</Nav.Link>
             ) : (
               <Nav.Link className='navbar-button' href="/login" style={{marginTop: '55%'}}>Login</Nav.Link>
             )}

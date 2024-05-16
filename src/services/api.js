@@ -102,3 +102,14 @@ export const getTypeRoomRequest = async()=>{
         }
     }
 }
+
+export const getRoomRequest = async(id, idRoom) =>{
+    try {
+        return await apiClient.get(`/room/get/${id}/${idRoom}`)
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}

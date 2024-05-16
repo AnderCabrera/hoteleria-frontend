@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './HotelCard.css'
+import { useLocation } from 'react-router-dom'
+import { getRoomRequest } from '../services/api'
 
-const RoomsCard = ({image, name, info}) => {
+const RoomsCard = () => {
+
+
+  
+
   return (
     <div className='card'>
         <div className='card-info'>
