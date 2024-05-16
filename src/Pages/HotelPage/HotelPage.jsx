@@ -26,7 +26,7 @@ const HotelPage = () => {
   console.log(imgHotel);
 
   const handleNavigate =()=>{
-      navigate('/InformationHotel'); // Redirigir al usuario a '/InformationHotel'
+      navigate('/InformationHotel', {state: {hotel}}); // Redirigir al usuario a '/InformationHotel'
   }
 
   return (
@@ -77,7 +77,7 @@ const HotelPage = () => {
           <br /><br /><br />
           
           <div className='container-text'>
-            <button className='reserve-button' onClick={handleNavigate}> Reservar Habitación</button>
+            <button className='reserve-button' onClick={handleNavigate}> Habitaciones</button>
           </div>
         </div>
       </div>
