@@ -3,7 +3,7 @@ import MyNavbar from '../../components/Navbar'
 import './InformationHotel.css'
 
 import { getRoomRequest, getTypeRoomRequest } from '../../services/api'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 
 const InformationHotel = () => {
@@ -11,6 +11,7 @@ const InformationHotel = () => {
   const location = useLocation()
   const {hotel} = location.state
   const [room, setRoom] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     getTypeRoomRequest()
@@ -32,7 +33,12 @@ const InformationHotel = () => {
       });
   }
 
-  console.log(room);
+
+
+  const hanldleChange = (rooms) =>{
+    navigate('/InformationService',{state: rooms})
+    console.log(rooms)
+  }
 
   return (
     <>
@@ -67,9 +73,9 @@ const InformationHotel = () => {
               <div className='card-info'>
              {/*  <img src={image} alt={name} className='card-image'/> */}
                   <p className='card-name'>Capacidad de personas: {rooms.peopleCapacity}</p>
-                  <p className='card-name'>Precio por Noche: Q.{rooms.nightPrice}.00</p>
+                  <p className='card-name'>Precio por Noche: $.{rooms.nightPrice}.00</p>
                   <p className='card-name'>Descripción: {rooms.description}</p>
-                  <button className='card-button'>Reservar</button>
+                  <button className='card-button' onClick={() => hanldleChange(rooms)} >Reservar</button>
               </div>
           </div>
             ))
