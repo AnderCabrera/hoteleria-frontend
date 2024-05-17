@@ -113,3 +113,15 @@ export const getRoomRequest = async(id, idRoom) =>{
         }
     }
 }
+
+export const getServices = async(idHotel) =>{
+    try {
+        return await apiClient.get(`/service/view/${idHotel}`)
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}
+

@@ -1,17 +1,42 @@
-import React from 'react';
-import './HotelCard.css'
+import React from 'react'
+import { getServices } from '../services/api'
 
-const ServicesCard = ({image, name, info}) => {
+export const ServicesCard = ({id}) => {
+
+  
+
+  useEffect(()=>{
+    getServices(hotel._id)
+      .then((response)=> {
+        setServices(response.data.foundedServices)
+      })
+      .catch((error) => {
+        console.error('Error fetching services:', error);
+      });
+  }, [])
+  
+console.log(services);
+
+
   return (
-    <div className='card'>
-        <div className='card-info'>
-        <img src={image} alt={name} className='card-image'/>
-            <p className='card-name'>{name}</p>
-            <p className='card-info-text'>{info}</p>
-            <button className='card-button'>información</button>
-        </div>
-    </div>
+    <>
+    {services === null ? (
+      <div className='container-null'> 
+      </div>
+      ):(
+        services.map((service)=> (
+          <div className='card'>
+          <div className='card-info'>
+              <p className='card-name'>{service.name}</p>
+              <p className='card-name'>{service.description}</p>
+              <p className='card-name'>$.{service.price}</p>
+          </div>
+      </div>
+        )
+        )
+        )}
+    </>
   )
+
 }
 
-export default ServicesCard;

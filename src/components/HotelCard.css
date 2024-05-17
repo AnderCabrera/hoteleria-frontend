@@ -99,3 +99,13 @@
   .heart.selected::after {
     background-color: red;
   }
+
+  .container-null {
+    margin-top: 20vh;
+    height: 29vh;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+  }

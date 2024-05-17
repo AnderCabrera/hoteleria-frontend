@@ -6,8 +6,7 @@ import './HomePage.css';
 import HotelesCard from '../../components/HotelesCard.jsx'
 import { hotelGet } from '../../shared/hooks/hotelGet.jsx';
 import Card from '../../components/HotelesCard.jsx';
-import ServicesCard from '../../components/ServicesCard.jsx';
-import RoomsCard from '../../components/RoomsCard.jsx';
+
 
 const countries = ['Guatemala', 'Canadá', 'México', 'Estados Unidos', 'Argentina', 'Brasil', 'España', 'Francia', 'Italia', 'China'];
 

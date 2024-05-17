@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'; // Importar useLoca
 import MyNavbar from '../../components/Navbar';
 import './HotelPage.css'
 import { getImgHotelRequest } from '../../services/api';
+import { getServices } from '../../services/api';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css'; 
@@ -12,6 +13,7 @@ const HotelPage = () => {
   const location = useLocation();
   const { hotel } = location.state;
   const navigate = useNavigate(); // Obtener la función navigate
+  const [services, setServices] = useState([])
 
   useEffect(() => {
     getImgHotelRequest(hotel._id)
@@ -22,8 +24,18 @@ const HotelPage = () => {
         console.error('Error fetching hotels:', error);
       });
   }, []);
+
+  useEffect(()=>{
+    getServices(hotel._id)
+      .then((response)=> {
+        setServices(response.data.foundedServices)
+      })
+      .catch((error) => {
+        console.error('Error fetching services:', error);
+      });
+  }, [])
   
-  console.log(imgHotel);
+console.log(services);
 
   const handleNavigate =()=>{
       navigate('/InformationHotel', {state: {hotel}}); // Redirigir al usuario a '/InformationHotel'
@@ -75,15 +87,36 @@ const HotelPage = () => {
             </div>
           </div>
           <br /><br /><br />
-          
+        
+          {services === null ? (
+                <div className='container-null'> 
+                </div>
+                ):(
+                  services.map((service)=> (
+                    <div className='card'>
+                    <div className='card-info'>
+                        <p className='card-name'>{service.name}</p>
+                        <p className='card-name'>{service.description}</p>
+                        <p className='card-name'>$.{service.price}</p>
+                    </div>
+                </div>
+                  )
+                  )
+                  )}
+
           <div className='container-text'>
             <button className='reserve-button' onClick={handleNavigate}> Habitaciones</button>
           </div>
         </div>
       </div>
+
+
       <br /><br /><br />
+      
+ 
     </>
   );
+
 };
 
 export default HotelPage;

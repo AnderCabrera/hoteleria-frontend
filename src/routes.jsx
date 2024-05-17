@@ -7,6 +7,7 @@ import { SettingUser } from './components/SettingUser.jsx';
 import InformationHotel from './Pages/InformationHotel/InformationHotel.jsx';
 import { AdminContainer } from './components/Admin/AdminContainer.jsx';
 import HotelPage from './Pages/HotelPage/HotelPage.jsx'; // Importar sin llaves
+import { InformationService } from './Pages/InformationService/InformationService.jsx';
 
 export const routes = [
     { path: '/registro', element: <Registro /> },
@@ -16,5 +17,6 @@ export const routes = [
     { path: '/Admin/*', element:<AdminContainer /> }, 
     { path: '/HotelPage', element:<HotelPage /> },
     {path: '/InformationHotel', element:<InformationHotel/> },
+    {path: '/InformationService', element:<InformationService/>},
     { path: '*', element: <HomePage /> }
 ];
