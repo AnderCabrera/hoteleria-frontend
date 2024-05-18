@@ -8,6 +8,7 @@ import InformationHotel from './Pages/InformationHotel/InformationHotel.jsx';
 import { AdminContainer } from './components/Admin/AdminContainer.jsx';
 import HotelPage from './Pages/HotelPage/HotelPage.jsx'; // Importar sin llaves
 import { InformationService } from './Pages/InformationService/InformationService.jsx';
+import { Reservation } from './Pages/Reservation/Reservation.jsx';
 
 export const routes = [
     { path: '/registro', element: <Registro /> },
@@ -18,5 +19,6 @@ export const routes = [
     { path: '/HotelPage', element:<HotelPage /> },
     {path: '/InformationHotel', element:<InformationHotel/> },
     {path: '/InformationService', element:<InformationService/>},
+    {path : '/Reservation', element:<Reservation/> },
     { path: '*', element: <HomePage /> }
 ];
