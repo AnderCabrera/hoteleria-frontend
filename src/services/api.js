@@ -71,6 +71,16 @@ export const getHotelRequest = async()=>{
         }
     }
 }
+export const searchHotelRequest = async(id)=>{
+    try {
+        return await apiClient.get(`/hotel/search/${id} `)
+    } catch (err) {
+        return{
+            error: true,
+            err
+        }
+    }
+}
 export const getImgHotelRequest = async(id)=>{
     try {
         return await apiClient.get(`/hotelImages/viewImages/${id} `)
