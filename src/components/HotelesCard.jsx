@@ -10,7 +10,7 @@ const Card = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getHotelRequest()
+    getHotelRequest() 
       .then((response) => {
         setHotels(response.data.hotelsFound);
       })
@@ -36,8 +36,6 @@ const Card = () => {
           return [];
         }
       });
-
-      // Guardar las URLs de las imágenes en el estado
       setImgHotels(imgUrls);
     };
 

@@ -1,13 +1,4 @@
-.container-cards {
-    padding-top: 5%;
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-between; 
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding-bottom: 5%;
-  }
-  
+
 
 .button-typeRoom {
     
@@ -101,4 +92,25 @@
 .card-button:hover {
   background-color: #DED5BC;
 }
-  
+.container-button-next {
+  text-align: right;
+}
+
+.button-next {
+  border-radius: 90px;
+  background-color: #B1AB94;
+  color: black;
+  border: none;
+  padding: 2% 3%;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+ 
+}
+
+.container-date {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+ /* Asegura que el contenedor tenga suficiente altura para centrar verticalmente */
+}

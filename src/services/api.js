@@ -71,6 +71,16 @@ export const getHotelRequest = async()=>{
         }
     }
 }
+export const searchHotelRequest = async(id)=>{
+    try {
+        return await apiClient.get(`/hotel/search/${id} `)
+    } catch (err) {
+        return{
+            error: true,
+            err
+        }
+    }
+}
 export const getImgHotelRequest = async(id)=>{
     try {
         return await apiClient.get(`/hotelImages/viewImages/${id} `)
@@ -125,3 +135,35 @@ export const getServices = async(idHotel) =>{
     }
 }
 
+export const getImgRoomRequest = async(id) =>{
+    try {
+        return await apiClient.get(`/roomImages/get/${id}`)
+    } catch (err) {
+        return {
+            error: true,
+            err
+        }
+    }
+}
+
+export const getDateRequest = async(idRoom) =>{
+    try {
+        return await apiClient.get(`/booking/dates/${idRoom}`)
+    } catch (err) {
+        return{
+            error: true,
+            err
+        }
+    }
+}
+
+export const addBookingRequest = async(idRoom,idUser,data) =>{
+    try {
+        return await apiClient.post(`/booking/new/${idRoom}/${idUser}`,data)
+    } catch (err) {
+        return {
+            error:true,
+            err
+        }
+    }
+}
