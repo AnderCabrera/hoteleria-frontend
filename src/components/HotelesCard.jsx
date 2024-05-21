@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import './HotelCard.css'; // Importar el CSS aquí
-import { getHotelRequest, getImgHotelRequest } from '../services/api';
-import { useNavigate } from 'react-router-dom';
-
+import { useEffect, useState } from "react";
+import "./HotelCard.css"; // Importar el CSS aquí
+import { getHotelRequest, getImgHotelRequest } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
   const [hotels, setHotels] = useState([]);
@@ -10,12 +9,12 @@ const Card = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getHotelRequest() 
+    getHotelRequest()
       .then((response) => {
         setHotels(response.data.hotelsFound);
       })
       .catch((error) => {
-        console.error('Error fetching hotels:', error);
+        console.error("Error fetching hotels:", error);
       });
   }, []);
 
@@ -30,7 +29,7 @@ const Card = () => {
         // Si hay imágenes encontradas para el hotel
         if (imgResult.data.foundedImages.length > 0) {
           // Mapear las URLs de las imágenes
-          return imgResult.data.foundedImages.map(image => image.image_url);
+          return imgResult.data.foundedImages.map((image) => image.image_url);
         } else {
           // Si no hay imágenes encontradas, devolver un arreglo vacío
           return [];
@@ -41,41 +40,50 @@ const Card = () => {
 
     fetchImgHotels();
   }, [hotels]);
-  console.log(imgHotels)
+  console.log(imgHotels);
 
   const getHotel = (hotel) => {
-    navigate('/HotelPage', { state: { hotel } });
+    navigate("/HotelPage", { state: { hotel } });
   };
 
   const handleHeartClick = (index) => {
     setHotels((prevHotels) => {
       const updatedHotels = [...prevHotels];
-      updatedHotels[index] = { ...updatedHotels[index], selected: !updatedHotels[index].selected };
+      updatedHotels[index] = {
+        ...updatedHotels[index],
+        selected: !updatedHotels[index].selected,
+      };
       return updatedHotels;
     });
   };
 
   return (
     <>
-      <div className='d-flex container-cards'> {/* Agregamos la clase container-cards */}
-        {
-          hotels.map((hotel, index) => (
-            <div key={index} className="card">
-              <div className="card-info">
-                <img src={imgHotels[index]} alt={`Imagen de ${hotel.name}`} className="card-image" />
-                <p className="card-name">{hotel.name}</p>
-                <p className="card-info-text">{hotel.description}</p>
-                <button onClick={() => getHotel(hotel)} className="card-button">Información</button>
-                <div
-                  className={`heart ${hotel.selected ? 'selected' : ''}`}
-                  onClick={() => handleHeartClick(index)}
-                >
-                  {/* No se necesita contenido */}
-                </div>
+      <div className="d-flex container-cards">
+        {" "}
+        {/* Agregamos la clase container-cards */}
+        {hotels.map((hotel, index) => (
+          <div key={index} className="card">
+            <div className="card-info">
+              <img
+                src={imgHotels[index]}
+                alt={`Imagen de ${hotel.name}`}
+                className="card-image"
+              />
+              <p className="card-name">{hotel.name}</p>
+              <p className="card-info-text">{hotel.description}</p>
+              <button onClick={() => getHotel(hotel)} className="card-button">
+                Información
+              </button>
+              <div
+                className={`heart ${hotel.selected ? "selected" : ""}`}
+                onClick={() => handleHeartClick(index)}
+              >
+                {/* No se necesita contenido */}
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </>
   );

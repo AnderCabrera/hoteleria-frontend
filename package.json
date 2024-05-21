@@ -7,13 +7,18 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky",
+    "format": "prettier --write \"{src,tests}/**/*.{js,jsx}\"",
+    "add": "git add ."
   },
   "dependencies": {
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "date-fns": "^3.6.0",
+    "husky": "^9.0.11",
     "jwt-decode": "^4.0.0",
+    "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-datepicker": "^6.9.0",
