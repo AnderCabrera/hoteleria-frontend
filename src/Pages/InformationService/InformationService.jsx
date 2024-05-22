@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import MyNavbar from "../../components/Navbar";
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import MyNavbar from '../../components/Navbar';
 import {
   addBookingRequest,
   getDateRequest,
   getServices,
-} from "../../services/api";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { format } from "date-fns";
+} from '../../services/api';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
 
 export const InformationService = () => {
   const navigate = useNavigate();
-  const idUser = localStorage.getItem("_id");
+  const idUser = localStorage.getItem('_id');
   const location = useLocation();
   const { rooms } = location.state;
   const [services, setServices] = useState([]);
@@ -27,7 +27,7 @@ export const InformationService = () => {
         setServices(response.data.foundedServices);
       })
       .catch((error) => {
-        console.error("Error fetching services:", error);
+        console.error('Error fetching services:', error);
       });
   }, [rooms.idHotel]);
 
@@ -37,25 +37,25 @@ export const InformationService = () => {
         setDates(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching dates:", error);
+        console.error('Error fetching dates:', error);
       });
   }, [rooms._id]);
 
   const handleButtonNext = () => {
     const formattedStartDate = startDate
-      ? format(startDate, "yyyy-MM-dd")
+      ? format(startDate, 'yyyy-MM-dd')
       : null;
-    const formattedEndDate = endDate ? format(endDate, "yyyy-MM-dd") : null;
+    const formattedEndDate = endDate ? format(endDate, 'yyyy-MM-dd') : null;
     const data = {
       date_start: formattedStartDate,
       date_end: formattedEndDate,
     };
     addBookingRequest(rooms._id, idUser, data)
       .then(() => {
-        navigate("/Reservation", { state: { selectedServices, rooms } });
+        navigate('/Reservation', { state: { selectedServices, rooms } });
       })
       .catch((error) => {
-        console.error("Error adding booking:", error);
+        console.error('Error adding booking:', error);
       });
   };
 
@@ -63,7 +63,7 @@ export const InformationService = () => {
     const today = new Date();
     const intervals = [
       {
-        start: new Date("1900-01-01"),
+        start: new Date('1900-01-01'),
         end: new Date(today.setDate(today.getDate() - 1)),
       },
     ];
@@ -135,8 +135,8 @@ export const InformationService = () => {
                 onClick={() => handleServiceClick(service)}
               >
                 {selectedServices.some((s) => s._id === service._id)
-                  ? "Eliminar"
-                  : "Agregar"}
+                  ? 'Eliminar'
+                  : 'Agregar'}
               </button>
             </div>
           </div>

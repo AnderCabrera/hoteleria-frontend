@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import "./HotelCard.css"; // Importar el CSS aquí
-import { getHotelRequest, getImgHotelRequest } from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import './HotelCard.css'; // Importar el CSS aquí
+import { getHotelRequest, getImgHotelRequest } from '../services/api';
+import { useNavigate } from 'react-router-dom';
 
 const Card = () => {
   const [hotels, setHotels] = useState([]);
@@ -14,7 +14,7 @@ const Card = () => {
         setHotels(response.data.hotelsFound);
       })
       .catch((error) => {
-        console.error("Error fetching hotels:", error);
+        console.error('Error fetching hotels:', error);
       });
   }, []);
 
@@ -43,7 +43,7 @@ const Card = () => {
   console.log(imgHotels);
 
   const getHotel = (hotel) => {
-    navigate("/HotelPage", { state: { hotel } });
+    navigate('/HotelPage', { state: { hotel } });
   };
 
   const handleHeartClick = (index) => {
@@ -60,7 +60,7 @@ const Card = () => {
   return (
     <>
       <div className="d-flex container-cards">
-        {" "}
+        {' '}
         {/* Agregamos la clase container-cards */}
         {hotels.map((hotel, index) => (
           <div key={index} className="card">
@@ -76,7 +76,7 @@ const Card = () => {
                 Información
               </button>
               <div
-                className={`heart ${hotel.selected ? "selected" : ""}`}
+                className={`heart ${hotel.selected ? 'selected' : ''}`}
                 onClick={() => handleHeartClick(index)}
               >
                 {/* No se necesita contenido */}

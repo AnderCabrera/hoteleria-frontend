@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import MyNavbar from "../../components/Navbar";
-import { useLocation } from "react-router-dom";
-import { searchHotelRequest } from "../../services/api";
+import React, { useEffect, useState } from 'react';
+import MyNavbar from '../../components/Navbar';
+import { useLocation } from 'react-router-dom';
+import { searchHotelRequest } from '../../services/api';
 
 export const Reservation = () => {
   const location = useLocation();
@@ -21,11 +21,11 @@ export const Reservation = () => {
         ) {
           setHotel(response.data.hotelsFound[0]);
         } else {
-          console.error("No hotels found");
+          console.error('No hotels found');
         }
       })
       .catch((error) => {
-        console.error("Error fetching hotels:", error);
+        console.error('Error fetching hotels:', error);
       });
   }, [rooms.idHotel]);
 

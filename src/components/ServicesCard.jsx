@@ -1,5 +1,5 @@
-import React from "react";
-import { getServices } from "../services/api";
+import React from 'react';
+import { getServices } from '../services/api';
 
 export const ServicesCard = ({ id }) => {
   useEffect(() => {
@@ -8,7 +8,7 @@ export const ServicesCard = ({ id }) => {
         setServices(response.data.foundedServices);
       })
       .catch((error) => {
-        console.error("Error fetching services:", error);
+        console.error('Error fetching services:', error);
       });
   }, []);
 

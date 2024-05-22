@@ -1,15 +1,15 @@
-import React from "react";
-import "./Navbar.css";
-import { Navbar, Nav, Button, Container, Row, Col } from "react-bootstrap";
-import logo from "../assets/img/LogoConNombre.png";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './Navbar.css';
+import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
+import logo from '../assets/img/LogoConNombre.png';
+import { useNavigate } from 'react-router-dom';
 
 const MyNavbar = () => {
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("token") !== null;
-  const userRole = localStorage.getItem("role");
+  const isLoggedIn = localStorage.getItem('token') !== null;
+  const userRole = localStorage.getItem('role');
   const handleLogout = () => {
-    navigate("/*");
+    navigate('/*');
     localStorage.clear();
     window.location.reload();
   };
@@ -31,7 +31,7 @@ const MyNavbar = () => {
                       Inicio
                     </Nav.Link>
                     {/* Verifica si el usuario es ADMIN_APP */}
-                    {userRole === "ADMIN_APP" ? (
+                    {userRole === 'ADMIN_APP' ? (
                       <Nav.Link
                         className="navbar-button"
                         href="/Admin/HotelAdmin"
@@ -44,6 +44,18 @@ const MyNavbar = () => {
                         href="/Hotel/CardHotel"
                       >
                         Hoteles
+                      </Nav.Link>
+                    )}
+                    {userRole === 'ADMIN_APP' ? (
+                      <Nav.Link
+                        className="navbar-button"
+                        href="/Admin/UserAdmin"
+                      >
+                        Usuarios
+                      </Nav.Link>
+                    ) : (
+                      <Nav.Link className="navbar-button" href="/settingUser">
+                        Usuario
                       </Nav.Link>
                     )}
                     <Nav.Link className="navbar-button" href="#">
@@ -62,7 +74,7 @@ const MyNavbar = () => {
               <Nav.Link
                 className="navbar-button"
                 href="/settingUser"
-                style={{ marginTop: "48%" }}
+                style={{ marginTop: '48%' }}
               >
                 Mi Cuenta
               </Nav.Link>
@@ -70,7 +82,7 @@ const MyNavbar = () => {
               <Nav.Link
                 className="navbar-button"
                 href="/login"
-                style={{ marginTop: "55%" }}
+                style={{ marginTop: '55%' }}
               >
                 Login
               </Nav.Link>
@@ -81,7 +93,7 @@ const MyNavbar = () => {
               <Nav.Link
                 className="navbar-button"
                 onClick={handleLogout}
-                style={{ marginTop: "35%" }}
+                style={{ marginTop: '35%' }}
               >
                 Cerrar Sesión
               </Nav.Link>
@@ -89,7 +101,7 @@ const MyNavbar = () => {
               <Nav.Link
                 className="navbar-button"
                 href="/registro"
-                style={{ marginTop: "35%" }}
+                style={{ marginTop: '35%' }}
               >
                 Registrar
               </Nav.Link>

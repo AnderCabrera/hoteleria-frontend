@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { getUserRequest } from "../../services/api";
+import React, { useState } from 'react';
+import { getUserRequest } from '../../services/api';
 
 export const searchUser = () => {
   const [users, setUsers] = useState(null);
@@ -7,7 +7,7 @@ export const searchUser = () => {
     const response = await getUserRequest(id);
     if (response.error) {
       alert(
-        response.err.response.data.message || "Error al obtener los usuario",
+        response.err.response.data.message || 'Error al obtener los usuario',
       );
     }
     setUsers(response.data);

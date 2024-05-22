@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from "react";
-import MyNavbar from "../../components/Navbar.jsx";
-import fondo from "../../assets/img/FondoVistaPrincipal.jpg";
-import logoNombre from "../../assets/img/LogoConNombre.png";
-import "./HomePage.css";
-import HotelesCard from "../../components/HotelesCard.jsx";
-import { hotelGet } from "../../shared/hooks/hotelGet.jsx";
-import Card from "../../components/HotelesCard.jsx";
+import React, { useState, useEffect } from 'react';
+import MyNavbar from '../../components/Navbar.jsx';
+import fondo from '../../assets/img/FondoVistaPrincipal.jpg';
+import logoNombre from '../../assets/img/LogoConNombre.png';
+import './HomePage.css';
+import HotelesCard from '../../components/HotelesCard.jsx';
+import { hotelGet } from '../../shared/hooks/hotelGet.jsx';
+import Card from '../../components/HotelesCard.jsx';
 
 const countries = [
-  "Guatemala",
-  "Canadá",
-  "México",
-  "Estados Unidos",
-  "Argentina",
-  "Brasil",
-  "España",
-  "Francia",
-  "Italia",
-  "China",
+  'Guatemala',
+  'Canadá',
+  'México',
+  'Estados Unidos',
+  'Argentina',
+  'Brasil',
+  'España',
+  'Francia',
+  'Italia',
+  'China',
 ];
 
 export const HomePage = () => {
@@ -39,8 +39,8 @@ export const HomePage = () => {
       <div className="img-container">
         <img className="img-Fondo" src={fondo} alt="" />
         <div className="text-overlay">
-          <h1 style={{ color: "black" }}>
-            Bienvenido a Kinal Stay <br /> Visita:{" "}
+          <h1 style={{ color: 'black' }}>
+            Bienvenido a Kinal Stay <br /> Visita:{' '}
             {countries[currentCountryIndex]}
           </h1>
         </div>

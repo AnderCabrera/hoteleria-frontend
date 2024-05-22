@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import MyNavbar from "./Navbar";
-import { LogoSinLetras } from "./logoSinLetras.jsx";
-import { Input } from "./Input.jsx";
-import { deleteUser } from "../shared/hooks/deleteUser.jsx";
-import { getUser } from "../shared/hooks/getUser.jsx";
-import { getUserRequest } from "../services/api.js";
+import React, { useEffect, useState } from 'react';
+import MyNavbar from './Navbar';
+import { LogoSinLetras } from './logoSinLetras.jsx';
+import { Input } from './Input.jsx';
+import { deleteUser } from '../shared/hooks/deleteUser.jsx';
+import { getUser } from '../shared/hooks/getUser.jsx';
+import { getUserRequest } from '../services/api.js';
 
 export const SettingUser = () => {
   // const { users, isFetching, getUsers } = getUser()
   const { usedeleteUser } = deleteUser();
-  const id = localStorage.getItem("_id");
+  const id = localStorage.getItem('_id');
 
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    let idtest = localStorage.getItem("_id");
+    let idtest = localStorage.getItem('_id');
     getUserRequest(idtest)
       .then((user) => user.data)
       .then((user) => {
@@ -36,7 +36,7 @@ export const SettingUser = () => {
       <MyNavbar />
 
       <div className="registro template d-flex justify-content-center align-items-center 110-w vh-110">
-        <LogoSinLetras text={"Kinal Stay"} />
+        <LogoSinLetras text={'Kinal Stay'} />
         <div className="form-container 50-w p-5 rounded ">
           <form>
             <div className="mb-2">

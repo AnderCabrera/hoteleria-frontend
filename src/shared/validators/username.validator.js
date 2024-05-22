@@ -4,4 +4,4 @@ export const validateUsername = (username) => {
 };
 
 export const usernameValidationMessage =
-  "Nombre de usuario inválido, mínimo 3 máximo 8 caracteres. No se aceptan espacios";
+  'Nombre de usuario inválido, mínimo 3 máximo 8 caracteres. No se aceptan espacios';

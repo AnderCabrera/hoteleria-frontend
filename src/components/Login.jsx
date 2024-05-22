@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import "./Auth.css";
-import { Input } from "./Input.jsx";
+import React, { useState } from 'react';
+import './Auth.css';
+import { Input } from './Input.jsx';
 import {
   validateUsername,
   usernameValidationMessage,
-} from "../shared/validators/username.validator.js";
+} from '../shared/validators/username.validator.js';
 import {
   passwordValidationMessage,
   validatePassword,
-} from "../shared/validators/password.validator.js";
-import { LogoSinLetras } from "./logoSinLetras.jsx";
-import { useLogin } from "../shared/hooks/useLogin.jsx";
+} from '../shared/validators/password.validator.js';
+import { LogoSinLetras } from './logoSinLetras.jsx';
+import { useLogin } from '../shared/hooks/useLogin.jsx';
 
 export const Login = () => {
   const { login, isLoading } = useLogin();
 
   const [formData, setFormData] = useState({
     username: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     password: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
@@ -41,10 +41,10 @@ export const Login = () => {
   const handleValidationOnBlur = (value, field) => {
     let isValid = false;
     switch (field) {
-      case "username":
+      case 'username':
         isValid = validateUsername(value);
         break;
-      case "password":
+      case 'password':
         isValid = validatePassword(value);
         break;
       default:
@@ -67,7 +67,7 @@ export const Login = () => {
 
   return (
     <div className="registro template d-flex justify-content-center align-items-center 100-w vh-100">
-      <LogoSinLetras text={"Kinal Stay"} />
+      <LogoSinLetras text={'Kinal Stay'} />
       <div className="form-container 40-w p-5 rounded">
         <form onSubmit={handleLogin}>
           <div className="mb-2">
