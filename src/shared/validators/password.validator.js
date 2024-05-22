@@ -4,4 +4,4 @@ export const validatePassword = (password) => {
 };
 
 export const passwordValidationMessage =
-  "La contraseña debe tener entre 6 y 12 caracteres y no tener espacios vacíos";
+  'La contraseña debe tener entre 6 y 12 caracteres y no tener espacios vacíos';

@@ -21,11 +21,11 @@ export const Reservation = () => {
         ) {
           setHotel(response.data.hotelsFound[0]);
         } else {
-          console.error("No hotels found");
+          console.error('No hotels found');
         }
       })
       .catch((error) => {
-        console.error("Error fetching hotels:", error);
+        console.error('Error fetching hotels:', error);
       });
   }, [rooms.idHotel]);
 

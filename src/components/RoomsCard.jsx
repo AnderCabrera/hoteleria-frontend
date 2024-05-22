@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import "./HotelCard.css";
-import { useLocation } from "react-router-dom";
-import { getRoomRequest } from "../services/api";
+import React, { useEffect } from 'react';
+import './HotelCard.css';
+import { useLocation } from 'react-router-dom';
+import { getRoomRequest } from '../services/api';
 
 const RoomsCard = () => {
   return (

@@ -1,56 +1,56 @@
-import React, { useState } from "react";
-import "./Auth.css";
-import { Input } from "./Input.jsx";
+import React, { useState } from 'react';
+import './Auth.css';
+import { Input } from './Input.jsx';
 import {
   validateEmail,
   emailValidationMessage,
-} from "../shared/validators/email.validator.js";
+} from '../shared/validators/email.validator.js';
 import {
   passwordValidationMessage,
   validatePassword,
-} from "../shared/validators/password.validator.js";
+} from '../shared/validators/password.validator.js';
 import {
   usernameValidationMessage,
   validateUsername,
-} from "../shared/validators/username.validator.js";
+} from '../shared/validators/username.validator.js';
 import {
   passConfirmationValidationMessage,
   validatePasswordConfirm,
-} from "../shared/validators/confirmPassword.validator.js";
-import { LogoSinLetras } from "./logoSinLetras.jsx";
-import { useRegister } from "../shared/hooks/useRegister.jsx";
+} from '../shared/validators/confirmPassword.validator.js';
+import { LogoSinLetras } from './logoSinLetras.jsx';
+import { useRegister } from '../shared/hooks/useRegister.jsx';
 
 export const Registro = () => {
   const { register, isLoading } = useRegister();
 
   const [formData, setFormData] = useState({
     email: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     username: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     password: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     passwordConfirm: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     name: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     lastname: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
@@ -59,16 +59,16 @@ export const Registro = () => {
   const handleValidationOnBlur = (value, field) => {
     let isValid = false;
     switch (field) {
-      case "email":
+      case 'email':
         isValid = validateEmail(value);
         break;
-      case "username":
+      case 'username':
         isValid = validateUsername(value);
         break;
-      case "password":
+      case 'password':
         isValid = validatePassword(value);
         break;
-      case "passwordConfirm":
+      case 'passwordConfirm':
         isValid = validatePasswordConfirm(formData.password.value, value);
         break;
       default:
@@ -107,7 +107,7 @@ export const Registro = () => {
 
   return (
     <div className="registro template d-flex justify-content-center align-items-center 110-w vh-110">
-      <LogoSinLetras text={"Kinal Stay"} />
+      <LogoSinLetras text={'Kinal Stay'} />
       <div className="form-container 50-w p-5 rounded ">
         <form onSubmit={handleRegister}>
           <div className="mb-2">

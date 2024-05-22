@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MyNavbar from "../../components/Navbar";
+
 import {
   addBookingRequest,
   getDateRequest,
@@ -12,9 +13,10 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { format } from "date-fns";
 
+
 export const InformationService = () => {
   const navigate = useNavigate();
-  const idUser = localStorage.getItem("_id");
+  const idUser = localStorage.getItem('_id');
   const location = useLocation();
   const { rooms } = location.state;
   const [services, setServices] = useState([]);
@@ -32,7 +34,7 @@ export const InformationService = () => {
         setServices(response.data.foundedServices);
       })
       .catch((error) => {
-        console.error("Error fetching services:", error);
+        console.error('Error fetching services:', error);
       });
   }, [rooms.idHotel]);
 
@@ -42,7 +44,7 @@ export const InformationService = () => {
         setDates(response.data);
       })
       .catch((error) => {
-        console.error("Error fetching dates:", error);
+        console.error('Error fetching dates:', error);
       });
   }, [rooms._id]);
 
@@ -64,17 +66,15 @@ export const InformationService = () => {
 
     addBookingRequest(rooms._id, idUser, data)
       .then(() => {
-        navigate("/Reservation", { state: { selectedServices, rooms } });
+        navigate('/Reservation', { state: { selectedServices, rooms } });
       })
       .catch((error) => {
-        console.error("Error adding booking:", error);
+        console.error('Error adding booking:', error);
       });
   };
 
   const getDisabledIntervals = () => {
     const intervals = [];
-
-    console.log(new Date(dates[0]?.date_end));
 
     dates.forEach((date) => {
       const start = new Date(date.date_start);
@@ -139,8 +139,8 @@ export const InformationService = () => {
                 onClick={() => handleServiceClick(service)}
               >
                 {selectedServices.some((s) => s._id === service._id)
-                  ? "Eliminar"
-                  : "Agregar"}
+                  ? 'Eliminar'
+                  : 'Agregar'}
               </button>
             </div>
           </div>

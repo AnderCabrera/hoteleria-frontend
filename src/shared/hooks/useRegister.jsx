@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { registerRequest } from "../../services/api";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import { registerRequest } from '../../services/api';
+import toast from 'react-hot-toast';
 
 export const useRegister = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,10 +26,10 @@ export const useRegister = () => {
       return toast.error(
         response?.err?.response?.data?.msg ||
           response?.err?.data?.msg ||
-          "Error al registrar el usuario, intenta de nuevo.",
+          'Error al registrar el usuario, intenta de nuevo.',
       );
     } else if (response) {
-      return toast.success("Usuario registrado exitosamente");
+      return toast.success('Usuario registrado exitosamente');
     }
     console.log(response);
   };

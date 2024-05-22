@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { getHotelRequest } from "../../services/api";
+import { useState } from 'react';
+import { getHotelRequest } from '../../services/api';
 
 export const hotelGet = () => {
   const [hoteles, setHoteles] = useState(null);
@@ -8,7 +8,7 @@ export const hotelGet = () => {
     const response = await getHotelRequest();
     if (response.error) {
       alert(
-        response.err.response.data.message || "Error al obtener los hoteles",
+        response.err.response.data.message || 'Error al obtener los hoteles',
       );
     }
     setHoteles(response.data);

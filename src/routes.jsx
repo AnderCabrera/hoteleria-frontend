@@ -1,4 +1,3 @@
-// Rutas
 import { Registro } from "./components/Registro.jsx";
 import { Login } from "./components/Login.jsx";
 import { HotelContainer } from "./components/HotelContainer.jsx";
@@ -11,6 +10,7 @@ import { InformationService } from "./Pages/InformationService/InformationServic
 import { Reservation } from "./Pages/Reservation/Reservation.jsx";
 import { AdminHotPanel } from "./Pages/AdministrationPanel/AdminHotPanel.jsx";
 import GraficasContainer from "./components/GraficasContainer.jsx";
+import { UserAdmin } from './components/Admin/UserAdmin.jsx';
 
 export const routes = [
   { path: "/registro", element: <Registro /> },
@@ -22,6 +22,7 @@ export const routes = [
   { path: "/InformationHotel", element: <InformationHotel /> },
   { path: "/InformationService", element: <InformationService /> },
   { path: "/Reservation", element: <Reservation /> },
+  { path: '/Admin/UserAdmin', element: <UserAdmin /> },
   { path: "/AdminPanel", element: <AdminHotPanel /> },
   { path: "/Informe/*", element: <GraficasContainer /> },
   { path: "*", element: <HomePage /> },

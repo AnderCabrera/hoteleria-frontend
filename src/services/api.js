@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:2880",
+  baseURL: 'http://localhost:2880',
   timeout: 5000,
 });
 
 export const registerRequest = async (data) => {
   try {
-    return await apiClient.post("/user/newUser", data);
+    return await apiClient.post('/user/newUser', data);
   } catch (err) {
     return {
       error: true,
@@ -18,7 +18,7 @@ export const registerRequest = async (data) => {
 
 export const loginRequest = async (data) => {
   try {
-    return await apiClient.post("/user/login", data);
+    return await apiClient.post('/user/login', data);
   } catch (err) {
     return {
       error: true,
@@ -26,9 +26,32 @@ export const loginRequest = async (data) => {
     };
   }
 };
+
+export const getUsersRequest = async () => {
+  try {
+    return await apiClient.get('/user/getUsers');
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
 export const getUserRequest = async (id) => {
   try {
     return await apiClient.get(`/user/search/${id}`);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
+export const updateUserRequest = async (id) => {
+  try {
+    return await apiClient.put(`/user/update/${id}`);
   } catch (err) {
     return {
       error: true,
@@ -61,7 +84,7 @@ export const updateUserRequest = async (id, data) => {
 
 apiClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
       config.headers.token = token;
     }
@@ -72,7 +95,7 @@ apiClient.interceptors.request.use(
 
 export const getHotelRequest = async () => {
   try {
-    return await apiClient.get("/hotel/get");
+    return await apiClient.get('/hotel/get');
   } catch (err) {
     return {
       error: true,
@@ -102,7 +125,7 @@ export const getImgHotelRequest = async (id) => {
 };
 export const addHotelRequest = async (data) => {
   try {
-    return await apiClient.get("/hotel/newHotel", data);
+    return await apiClient.get('/hotel/newHotel', data);
   } catch (err) {
     return {
       error: true,
@@ -113,7 +136,7 @@ export const addHotelRequest = async (data) => {
 
 export const getTypeRoomRequest = async () => {
   try {
-    return await apiClient.get("/typeRoom/view");
+    return await apiClient.get('/typeRoom/view');
   } catch (err) {
     return {
       error: true,

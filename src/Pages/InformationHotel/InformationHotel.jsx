@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import MyNavbar from "../../components/Navbar";
 import "./InformationHotel.css";
+
 import {
   getRoomRequest,
   getTypeRoomRequest,
   getImgRoomRequest,
-} from "../../services/api";
-import { useLocation, useNavigate } from "react-router-dom";
+} from '../../services/api';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const InformationHotel = () => {
   const [typeRoom, setTypeRoom] = useState([]);
@@ -23,7 +24,7 @@ const InformationHotel = () => {
         setTypeRoom(data.typeRoomsFounded);
       })
       .catch((error) => {
-        console.error("Error fetching room types:", error);
+        console.error('Error fetching room types:', error);
       });
   }, []);
 
@@ -34,7 +35,7 @@ const InformationHotel = () => {
         setRoom(data.foundedRooms);
       })
       .catch((error) => {
-        console.error("Error fetching rooms:", error);
+        console.error('Error fetching rooms:', error);
       });
   };
 
@@ -56,7 +57,7 @@ const InformationHotel = () => {
   }, [room]);
 
   const handleChange = (rooms) => {
-    navigate("/InformationService", { state: { rooms } });
+    navigate('/InformationService', { state: { rooms } });
     console.log(rooms);
   };
 

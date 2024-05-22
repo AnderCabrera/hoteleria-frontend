@@ -21,7 +21,7 @@ const HotelPage = () => {
         setImgHotel(response.data.foundedImages);
       })
       .catch((error) => {
-        console.error("Error fetching hotels:", error);
+        console.error('Error fetching hotels:', error);
       });
   }, []);
 
@@ -31,14 +31,14 @@ const HotelPage = () => {
         setServices(response.data.foundedServices);
       })
       .catch((error) => {
-        console.error("Error fetching services:", error);
+        console.error('Error fetching services:', error);
       });
   }, []);
 
   console.log(services);
 
   const handleNavigate = () => {
-    navigate("/InformationHotel", { state: { hotel } }); // Redirigir al usuario a '/InformationHotel'
+    navigate('/InformationHotel', { state: { hotel } }); // Redirigir al usuario a '/InformationHotel'
   };
 
   return (
@@ -56,7 +56,7 @@ const HotelPage = () => {
         ) : (
           <div className="carousel-container">
             <Slider autoplay={true} autoplaySpeed={2000}>
-              {" "}
+              {' '}
               {/* Autoplay y velocidad de 2 segundos */}
               {imgHotel.map((image, index) => (
                 <div key={index}>
@@ -118,7 +118,7 @@ const HotelPage = () => {
 
           <div className="container-text">
             <button className="reserve-button" onClick={handleNavigate}>
-              {" "}
+              {' '}
               Habitaciones
             </button>
           </div>

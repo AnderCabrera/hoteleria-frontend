@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-import { LogoSinLetras } from "../logoSinLetras.jsx";
-import { Input } from "../Input.jsx";
-import { addHotel } from "../../shared/hooks/addHotel.jsx";
-import MyNavbar from "../Navbar.jsx";
+import React, { useState } from 'react';
+import { LogoSinLetras } from '../logoSinLetras.jsx';
+import { Input } from '../Input.jsx';
+import { addHotel } from '../../shared/hooks/addHotel.jsx';
+import MyNavbar from '../Navbar.jsx';
 export const HotelAdmin = () => {
   const { saveHotel } = addHotel();
 
   const [formData, setFormData] = useState({
     name: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     country: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     address: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
     description: {
-      value: "",
+      value: '',
       isValid: false,
       showError: false,
     },
@@ -52,7 +52,7 @@ export const HotelAdmin = () => {
     <>
       <MyNavbar></MyNavbar>
       <div className="registro template d-flex justify-content-center align-items-center 110-w vh-110">
-        <LogoSinLetras text={"Kinal Stay"} />
+        <LogoSinLetras text={'Kinal Stay'} />
         <div className="form-container 50-w p-5 rounded ">
           <form onSubmit={handleAddHotel}>
             <div className="mb-2">
