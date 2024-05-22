@@ -15,6 +15,42 @@ const MyNavbar = () => {
     window.location.reload();
   };
 
+  const returnLinks = () => {
+    if (isLoggedIn) {
+      if (userRole === "ADMIN_APP") {
+        return (
+          <>
+            <Nav.Link href="/Informe/Grafica" className="navbar-button">
+              Gráficas
+            </Nav.Link>
+          </>
+        );
+      } else if (userRole === "ADMIN_HOTEL") {
+        return (
+          <>
+            <Nav.Link href="/AdminPanel" className="navbar-button">
+              Administrar mi hotel
+            </Nav.Link>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <Nav.Link className="navbar-button" href="/">
+              Inicio
+            </Nav.Link>
+            <Nav.Link href="/HotelContainer" className="navbar-button">
+              Hoteles
+            </Nav.Link>
+            <Nav.Link href="/BookingContainer" className="navbar-button">
+              Reservas
+            </Nav.Link>
+          </>
+        );
+      }
+    }
+  };
+
   return (
     <Navbar className="navbar-background" expand="lg">
       <Container fluid>
@@ -26,35 +62,8 @@ const MyNavbar = () => {
                 <Navbar.Brand>
                   <img src={logo} alt="" width="90px" />
                 </Navbar.Brand>
-                {isLoggedIn ? (
-                  <>
-                    <Nav.Link className="navbar-button" href="/">
-                      Inicio
-                    </Nav.Link>
-                    {/* Verifica si el usuario es ADMIN_APP */}
-                    {userRole === "ADMIN_APP" ? (
-                      <Nav.Link
-                        className="navbar-button"
-                        href="/Admin/HotelAdmin"
-                      >
-                        Hoteles
-                      </Nav.Link>
-                    ) : (
-                      <Nav.Link
-                        className="navbar-button"
-                        href="/Hotel/CardHotel"
-                      >
-                        Hoteles
-                      </Nav.Link>
-                    )}
-                    <Nav.Link className="navbar-button" href="/Informe/Grafica">
-                      Gráficas
-                    </Nav.Link>
-                    <Nav.Link className="navbar-button" href="#">
-                      Reservaciones
-                    </Nav.Link>
-                  </>
-                ) : null}
+
+                {returnLinks()}
               </Nav>
             </Navbar.Collapse>
           </Col>
