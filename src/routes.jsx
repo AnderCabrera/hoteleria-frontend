@@ -9,6 +9,7 @@ import { AdminContainer } from "./components/Admin/AdminContainer.jsx";
 import HotelPage from "./Pages/HotelPage/HotelPage.jsx"; // Importar sin llaves
 import { InformationService } from "./Pages/InformationService/InformationService.jsx";
 import { Reservation } from "./Pages/Reservation/Reservation.jsx";
+import { AdminHotPanel } from "./Pages/AdministrationPanel/AdminHotPanel.jsx";
 
 export const routes = [
   { path: "/registro", element: <Registro /> },
@@ -20,5 +21,6 @@ export const routes = [
   { path: "/InformationHotel", element: <InformationHotel /> },
   { path: "/InformationService", element: <InformationService /> },
   { path: "/Reservation", element: <Reservation /> },
+  { path: "/AdminPanel", element: <AdminHotPanel /> },
   { path: "*", element: <HomePage /> },
 ];

@@ -165,3 +165,25 @@ export const addBookingRequest = async (idRoom, idUser, data) => {
     };
   }
 };
+
+export const addRoomRequest = async (idUser, roomData) => {
+  try {
+    return await apiClient.post(`/room/new/${idUser}`, roomData);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
+export const getRoomHotelRequest = async (idUser) => {
+  try {
+    return await apiClient.get(`/room/getHotel/${idUser}`);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
