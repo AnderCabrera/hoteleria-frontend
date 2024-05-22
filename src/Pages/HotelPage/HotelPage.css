@@ -10,11 +10,25 @@
     color: #B1AB94;
 
 }
+.container-cards {
+  padding-top: 5%;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  max-width: 1200px; 
+  margin: 0 auto;
+  padding-bottom: 5%;
+}
+
 .text-subtitle{
     font-size: 25px;
     font-weight: bold;
     font-style: italic;
     margin-bottom: 5px;
+}
+.container-price{
+  display: flex;
+  justify-content: flex-end;
 }
 .text-info-Hotel{
     text-align: center;
@@ -96,6 +110,8 @@
     width: 30%; 
     margin-bottom: 5%; 
   }
+  
+
   
   
   .card-image {

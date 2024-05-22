@@ -1,14 +1,14 @@
 export const Input = ({
-    field,
-    label,
-    value,
-    onChangeHandler,
-    type,
-    showErrorMessage,
-    validationMessage,
-    onBlurHandler,
-    textarea,
-    placeholder
+  field,
+  label,
+  value,
+  onChangeHandler,
+  type,
+  showErrorMessage,
+  validationMessage,
+  onBlurHandler,
+  textarea,
+  placeholder,
 }) => {
     const handleValueChange = (e) => {
         onChangeHandler(e.target.value, field);
