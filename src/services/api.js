@@ -71,6 +71,17 @@ export const deleteUserRequest = async (id) => {
   }
 };
 
+export const updateUserRequest = async (id, data) => {
+  try {
+    return await apiClient.put(`/user/update/${id}`, data);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
 apiClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -167,6 +178,17 @@ export const getImgRoomRequest = async (id) => {
   }
 };
 
+export const getBookingRequest = async () => {
+  try {
+    return await apiClient.get("/booking/getBooking");
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
 export const getDateRequest = async (idRoom) => {
   try {
     return await apiClient.get(`/booking/dates/${idRoom}`);
@@ -181,6 +203,28 @@ export const getDateRequest = async (idRoom) => {
 export const addBookingRequest = async (idRoom, idUser, data) => {
   try {
     return await apiClient.post(`/booking/new/${idRoom}/${idUser}`, data);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
+export const addRoomRequest = async (idUser, roomData) => {
+  try {
+    return await apiClient.post(`/room/new/${idUser}`, roomData);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
+
+export const getRoomHotelRequest = async (idUser) => {
+  try {
+    return await apiClient.get(`/room/getHotel/${idUser}`);
   } catch (err) {
     return {
       error: true,

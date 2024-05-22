@@ -15,7 +15,9 @@ export const Input = ({
   };
 
   const handleInputBlur = (e) => {
-    onBlurHandler(e.target.value, field);
+    if (onBlurHandler) {
+      onBlurHandler(e.target.value, field);
+    }
   };
 
   return (

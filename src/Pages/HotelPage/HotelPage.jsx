@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'; // Importar useLocation y useNavigate
-import MyNavbar from '../../components/Navbar';
-import './HotelPage.css';
-import { getImgHotelRequest } from '../../services/api';
-import { getServices } from '../../services/api';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // Importar useLocation y useNavigate
+import MyNavbar from "../../components/Navbar";
+import "./HotelPage.css";
+import { getImgHotelRequest } from "../../services/api";
+import { getServices } from "../../services/api";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const HotelPage = () => {
   const [imgHotel, setImgHotel] = useState([]);
@@ -105,8 +105,8 @@ const HotelPage = () => {
           {services === null ? (
             <div className="container-null"></div>
           ) : (
-            services.map((service) => (
-              <div className="card">
+            services.map((service, index) => (
+              <div className="card" key={index}>
                 <div className="card-info">
                   <p className="card-name">{service.name}</p>
                   <p className="card-name">{service.description}</p>

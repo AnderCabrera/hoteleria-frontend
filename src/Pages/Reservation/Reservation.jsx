@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import MyNavbar from '../../components/Navbar';
-import { useLocation } from 'react-router-dom';
-import { searchHotelRequest } from '../../services/api';
+import { useEffect, useState } from "react";
+import MyNavbar from "../../components/Navbar";
+import { useLocation } from "react-router-dom";
+import { searchHotelRequest } from "../../services/api";
 
 export const Reservation = () => {
   const location = useLocation();
@@ -30,6 +30,7 @@ export const Reservation = () => {
   }, [rooms.idHotel]);
 
   useEffect(() => {
+    console.log(selectedServices);
     const total = currentSelectedServices.reduce(
       (sum, service) => sum + service.price,
       0,

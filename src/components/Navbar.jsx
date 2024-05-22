@@ -1,8 +1,9 @@
-import React from 'react';
-import './Navbar.css';
-import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
-import logo from '../assets/img/LogoConNombre.png';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./Navbar.css";
+import { Navbar, Nav, Button, Container, Row, Col } from "react-bootstrap";
+import logo from "../assets/img/LogoConNombre.png";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MyNavbar = () => {
   const navigate = useNavigate();
@@ -12,6 +13,42 @@ const MyNavbar = () => {
     navigate('/*');
     localStorage.clear();
     window.location.reload();
+  };
+
+  const returnLinks = () => {
+    if (isLoggedIn) {
+      if (userRole === "ADMIN_APP") {
+        return (
+          <>
+            <Nav.Link href="/Informe/Grafica" className="navbar-button">
+              Gráficas
+            </Nav.Link>
+          </>
+        );
+      } else if (userRole === "ADMIN_HOTEL") {
+        return (
+          <>
+            <Nav.Link href="/AdminPanel" className="navbar-button">
+              Administrar mi hotel
+            </Nav.Link>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <Nav.Link className="navbar-button" href="/">
+              Inicio
+            </Nav.Link>
+            <Nav.Link href="/HotelContainer" className="navbar-button">
+              Hoteles
+            </Nav.Link>
+            <Nav.Link href="/BookingContainer" className="navbar-button">
+              Reservas
+            </Nav.Link>
+          </>
+        );
+      }
+    }
   };
 
   return (
@@ -25,47 +62,9 @@ const MyNavbar = () => {
                 <Navbar.Brand>
                   <img src={logo} alt="" width="90px" />
                 </Navbar.Brand>
-                {isLoggedIn ? (
-                  <>
-                    <Nav.Link className="navbar-button" href="/">
-                      Inicio
-                    </Nav.Link>
-                    {/* Verifica si el usuario es ADMIN_APP */}
-                    {userRole === 'ADMIN_APP' ? (
-                      <Nav.Link
-                        className="navbar-button"
-                        href="/Admin/HotelAdmin"
-                      >
-                        Hoteles
-                      </Nav.Link>
-                    ) : (
-                      <Nav.Link
-                        className="navbar-button"
-                        href="/Hotel/CardHotel"
-                      >
-                        Hoteles
-                      </Nav.Link>
-                    )}
-                    {userRole === 'ADMIN_APP' ? (
-                      <Nav.Link
-                        className="navbar-button"
-                        href="/Admin/UserAdmin"
-                      >
-                        Usuarios
-                      </Nav.Link>
-                    ) : (
-                      <Nav.Link className="navbar-button" href="/settingUser">
-                        Usuario
-                      </Nav.Link>
-                    )}
-                    <Nav.Link className="navbar-button" href="#">
-                      Servicios
-                    </Nav.Link>
-                    <Nav.Link className="navbar-button" href="#">
-                      Reservaciones
-                    </Nav.Link>
-                  </>
-                ) : null}
+
+                {returnLinks()}
+
               </Nav>
             </Navbar.Collapse>
           </Col>
