@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Chart, registerables } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import { getBookingRequest } from '../services/api'; // Asegúrate de tener el path correcto
+import React, { useEffect, useState } from "react";
+import { Chart, registerables } from "chart.js";
+import { Bar } from "react-chartjs-2";
+import { getBookingRequest } from "../services/api"; // Asegúrate de tener el path correcto
 
 Chart.register(...registerables);
 
 const Graficas = () => {
   const [chartData, setChartData] = useState({
     labels: [],
-    datasets: []
+    datasets: [],
   });
 
   useEffect(() => {
@@ -23,12 +23,12 @@ const Graficas = () => {
           labels: labels,
           datasets: [
             {
-              label: 'Reservaciones por Hotel',
-              backgroundColor: 'rgba(75,192,192,0.2)',
-              borderColor: 'rgba(75,192,192,1)',
+              label: "Reservaciones por Hotel",
+              backgroundColor: "rgba(75,192,192,0.2)",
+              borderColor: "rgba(75,192,192,1)",
               borderWidth: 1,
-              hoverBackgroundColor: 'rgba(75,192,192,0.4)',
-              hoverBorderColor: 'rgba(75,192,192,1)',
+              hoverBackgroundColor: "rgba(75,192,192,0.4)",
+              hoverBorderColor: "rgba(75,192,192,1)",
               data: counts,
             },
           ],
@@ -51,7 +51,7 @@ const Graficas = () => {
   return (
     <div>
       <h2>Reservaciones por Hotel</h2>
-      <div style={{ height: '500px' }}>
+      <div style={{ height: "500px" }}>
         <Bar data={chartData} options={options} />
       </div>
     </div>

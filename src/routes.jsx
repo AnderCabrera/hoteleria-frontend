@@ -10,6 +10,7 @@ import HotelPage from "./Pages/HotelPage/HotelPage.jsx"; // Importar sin llaves
 import { InformationService } from "./Pages/InformationService/InformationService.jsx";
 import { Reservation } from "./Pages/Reservation/Reservation.jsx";
 import { AdminHotPanel } from "./Pages/AdministrationPanel/AdminHotPanel.jsx";
+import GraficasContainer from "./components/GraficasContainer.jsx";
 
 export const routes = [
   { path: "/registro", element: <Registro /> },
@@ -22,5 +23,6 @@ export const routes = [
   { path: "/InformationService", element: <InformationService /> },
   { path: "/Reservation", element: <Reservation /> },
   { path: "/AdminPanel", element: <AdminHotPanel /> },
+  { path: "/Informe/*", element: <GraficasContainer /> },
   { path: "*", element: <HomePage /> },
 ];

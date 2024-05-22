@@ -49,16 +49,15 @@ export const deleteUserRequest = async (id) => {
 };
 
 export const updateUserRequest = async (id, data) => {
-    try {
-        return await apiClient.put(`/user/update/${id}`, data);
-    } catch (err) {
-        return {
-            error: true,
-            err
-        };
-    }
+  try {
+    return await apiClient.put(`/user/update/${id}`, data);
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
 };
-
 
 apiClient.interceptors.request.use(
   (config) => {
@@ -156,17 +155,16 @@ export const getImgRoomRequest = async (id) => {
   }
 };
 
-
 export const getBookingRequest = async () => {
-    try {
-      return await apiClient.get('/booking/getBooking');
-    } catch (err) {
-      return {
-        error: true,
-        err
-      };
-    }
-}
+  try {
+    return await apiClient.get("/booking/getBooking");
+  } catch (err) {
+    return {
+      error: true,
+      err,
+    };
+  }
+};
 
 export const getDateRequest = async (idRoom) => {
   try {
