@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MyNavbar from "../../components/Navbar";
 import "./InformationHotel.css";
 import {
@@ -12,7 +12,7 @@ const InformationHotel = () => {
   const [typeRoom, setTypeRoom] = useState([]);
   const location = useLocation();
   const { hotel } = location.state;
-  const [room, setRoom] = useState(null);
+  const [room, setRoom] = useState([]);
   const [imgRooms, setImgRooms] = useState([]);
   const navigate = useNavigate();
 

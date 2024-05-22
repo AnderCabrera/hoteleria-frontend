@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom"; // Importar useLocation y useNavigate
 import MyNavbar from "../../components/Navbar";
 import "./HotelPage.css";
@@ -105,8 +105,8 @@ const HotelPage = () => {
           {services === null ? (
             <div className="container-null"></div>
           ) : (
-            services.map((service) => (
-              <div className="card">
+            services.map((service, index) => (
+              <div className="card" key={index}>
                 <div className="card-info">
                   <p className="card-name">{service.name}</p>
                   <p className="card-name">{service.description}</p>

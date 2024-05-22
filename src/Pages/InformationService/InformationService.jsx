@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MyNavbar from "../../components/Navbar";
 import {
@@ -8,6 +8,8 @@ import {
 } from "../../services/api";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import { format } from "date-fns";
 
 export const InformationService = () => {
@@ -17,9 +19,12 @@ export const InformationService = () => {
   const { rooms } = location.state;
   const [services, setServices] = useState([]);
   const [dates, setDates] = useState([]);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [startDate, endDate] = dateRange;
+
   const [selectedServices, setSelectedServices] = useState([]);
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     getServices(rooms.idHotel)
@@ -42,14 +47,21 @@ export const InformationService = () => {
   }, [rooms._id]);
 
   const handleButtonNext = () => {
-    const formattedStartDate = startDate
-      ? format(startDate, "yyyy-MM-dd")
-      : null;
-    const formattedEndDate = endDate ? format(endDate, "yyyy-MM-dd") : null;
+    if (!startDate || !endDate) {
+      MySwal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Selecciona una fecha de inicio y fin",
+      });
+      return;
+    }
+
     const data = {
-      date_start: formattedStartDate,
-      date_end: formattedEndDate,
+      date_start: format(startDate, "yyyy-MM-dd"),
+      date_end: format(endDate, "yyyy-MM-dd"),
+      servicesAdquired: selectedServices.map((service) => service._id),
     };
+
     addBookingRequest(rooms._id, idUser, data)
       .then(() => {
         navigate("/Reservation", { state: { selectedServices, rooms } });
@@ -60,13 +72,9 @@ export const InformationService = () => {
   };
 
   const getDisabledIntervals = () => {
-    const today = new Date();
-    const intervals = [
-      {
-        start: new Date("1900-01-01"),
-        end: new Date(today.setDate(today.getDate() - 1)),
-      },
-    ];
+    const intervals = [];
+
+    console.log(new Date(dates[0]?.date_end));
 
     dates.forEach((date) => {
       const start = new Date(date.date_start);
@@ -81,21 +89,14 @@ export const InformationService = () => {
 
   const disabledIntervals = getDisabledIntervals();
 
-  const handleDateChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
-
   const handleServiceClick = (service) => {
-    setSelectedServices((prevSelected) => {
-      const isAlreadySelected = prevSelected.some((s) => s._id === service._id);
-      if (isAlreadySelected) {
-        return prevSelected.filter((s) => s._id !== service._id);
-      } else {
-        return [...prevSelected, service];
-      }
-    });
+    if (selectedServices.some((s) => s._id === service._id)) {
+      setSelectedServices((prevSelected) =>
+        prevSelected.filter((s) => s._id !== service._id),
+      );
+    } else {
+      setSelectedServices((prevSelected) => [...prevSelected, service]);
+    }
   };
 
   return (
@@ -105,13 +106,16 @@ export const InformationService = () => {
       <div className="container-date">
         <div className="calendar-container">
           <DatePicker
-            selected={startDate}
-            onChange={handleDateChange}
+            selectsRange={true}
             startDate={startDate}
             endDate={endDate}
-            selectsRange
-            inline
+            minDate={new Date()}
             excludeDateIntervals={disabledIntervals}
+            onChange={(update) => {
+              setDateRange(update);
+            }}
+            withPortal
+            inline
             dateFormat="yyyy-MM-dd"
           />
         </div>
@@ -124,8 +128,8 @@ export const InformationService = () => {
           No hay servicios disponibles para este cuarto
         </div>
       ) : (
-        services.map((service) => (
-          <div key={service._id} className="card">
+        services.map((service, index) => (
+          <div key={index} className="card">
             <div className="card-info">
               <p className="card-name">{service.name}</p>
               <p className="card-name">{service.description}</p>
