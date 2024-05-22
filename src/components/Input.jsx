@@ -11,12 +11,14 @@ export const Input = ({
     placeholder
 }) => {
     const handleValueChange = (e) => {
-        onChangeHandler(e.target.value, field)
-    }
+        onChangeHandler(e.target.value, field);
+    };
 
     const handleInputBlur = (e) => {
-        onBlurHandler(e.target.value, field)
-    }
+        if (onBlurHandler) {
+            onBlurHandler(e.target.value, field);
+        }
+    };
 
     return (
         <>
@@ -48,5 +50,5 @@ export const Input = ({
                 {showErrorMessage && validationMessage}
             </span>
         </>
-    )
-}
+    );
+};

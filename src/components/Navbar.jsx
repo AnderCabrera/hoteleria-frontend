@@ -3,6 +3,7 @@ import './Navbar.css'
 import { Navbar, Nav, Button, Container, Row, Col } from 'react-bootstrap';
 import logo from '../assets/img/LogoConNombre.png';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 const MyNavbar = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const MyNavbar = () => {
                     ) : (
                       <Nav.Link  className='navbar-button' href="/Hotel/CardHotel">Hoteles</Nav.Link>
                     )}
-                    <Nav.Link className='navbar-button' href="#">Servicios</Nav.Link>
+                    <Nav.Link className='navbar-button' href="/Informe/Grafica">Gráficas</Nav.Link>
                     <Nav.Link className='navbar-button' href="#">Reservaciones</Nav.Link>
                   </>
                 ) : null}
